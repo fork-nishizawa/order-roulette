@@ -1,6 +1,7 @@
 <template>
   <div>
-    <input type="text" v-model="inputValue">
+    <textarea cols="30" rows="10" v-model="inputValue"></textarea>
+    <br>
     <button @click="addPlayer">Add</button>
     <button @click="clearPlayer">clear</button>
     <br>
@@ -22,7 +23,8 @@ const players = ref<string[]>([])
 const timerID = ref<null|number>(null)
 
 const addPlayer = () => {
-  players.value.push(inputValue.value)
+  const arr = inputValue.value.split(/\n/)
+  players.value = [...arr]
   inputValue.value = ''
 }
 
